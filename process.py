@@ -42,6 +42,7 @@ def small_lesion_filter(array):
     return array
     
 datadir = './data/'
+outdatadir = './out/'
 filename1 = 'P007-0m-Lesion_T1_BL_EDITED2.nii.gz'
 filename2 = 'P007-3m-Lesion_T1_BL_EDITED2.nii.gz'
 
@@ -74,7 +75,7 @@ vol2,labelid = calculate_volume_labels(labels2, numlabels)
 # Export results as xlsx
 data = np.transpose(np.vstack([labelid,vol1,vol2]))
 data  = pd.DataFrame(data, columns=['id', 'v1', 'v2'])
-xlsfname = os.path.join('volumes.xlsx')
+xlsfname = os.path.join(outdatadir,'volumes.xlsx')
 data.to_excel(xlsfname, index=False)
 
 
